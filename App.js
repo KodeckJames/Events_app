@@ -1,12 +1,24 @@
 // import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Platform, SafeAreaView, StatusBar } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, Text, View, Platform, SafeAreaView, StatusBar, ScrollView, TextInput, Button, TouchableOpacity } from 'react-native';
 
 export default function App() {
+  const [text, setText] = useState("")
   return (
     <SafeAreaView style={styles.container}>
       <Text style={{fontSize:32}}>Hello, World!</Text>
-      <Text style={{fontSize:24}}>Platform: {Platform.OS === 'ios' ? "ios" : "Android"}</Text>
-
+      <Text style={{ fontSize: 24 }}>Platform: {Platform.OS === 'ios' ? "ios" : "Android"}</Text>
+      <ScrollView style={{}}>
+        <View style={{ backgroundColor: "pink", height: 1600, padding: 20 }}>
+          <TextInput defaultValue={text} onChangeText={txt => setText(txt)} style={{ borderWidth: 1, padding: 10, marginBottom:10 }} />
+          <Button title='Press me' onPress={() => console.log("Hello")
+          } style={{ color: "crimson" }} />
+          <TouchableOpacity style={{backgroundColor:"purple", padding:10}}>
+            <Text>Click me too!</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+      <StatusBar barStyle={"dark-content"} backgroundColor={"orange"}/>
     </SafeAreaView>
   );
 }
